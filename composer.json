@@ -1,0 +1,21 @@
+{
+  "name": "drupal/xnumber",
+  "type": "drupal-module",
+  "description": "Adds extended xinteger, xdecimal, xfloat field types and xnumber form display widget.",
+  "authors": [
+    {
+      "name": "Vladimir Proshin (drugan)",
+      "homepage": "https://www.drupal.org/u/drugan",
+      "role": "Maintainer"
+    }
+  ],
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/xnumber",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://github.com/drugan/xnumber/issues",
+    "source": "https://github.com/drugan/xnumber"
+  },
+  "require": { }
+}

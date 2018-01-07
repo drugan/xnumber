@@ -1,0 +1,8 @@
+name: 'Extended Number Field'
+type: module
+description: 'Adds extended xinteger, xdecimal, xfloat field types and xnumber form display widget.'
+core: 8.x
+package: Field types
+dependencies:
+  - drupal:field_ui
+  - drupal:readmehelp

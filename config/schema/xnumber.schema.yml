@@ -1,0 +1,152 @@
+field.value.xinteger:
+  type: mapping
+  label: 'Default value'
+  mapping:
+    value:
+      type: string
+      label: 'Value'
+
+field.storage_settings.xinteger:
+  type: mapping
+  label: 'Integer settings'
+  mapping:
+    unsigned:
+      type: boolean
+      label: 'Unsigned'
+    size:
+      type: string
+      label: 'The size of a number'
+
+field.field_settings.xinteger:
+  type: mapping
+  label: 'Integer'
+  mapping:
+    step:
+      type: string
+      label: 'Step'
+    min:
+      type: string
+      label: 'Minimum'
+    max:
+      type: string
+      label: 'Maximum'
+    prefix:
+      type: label
+      label: 'Prefix'
+    suffix:
+      type: label
+      label: 'Suffix'
+    placeholder:
+      type: label
+      label: 'Placeholder'
+
+field.value.xdecimal:
+  type: mapping
+  label: 'Default value'
+  mapping:
+    value:
+      type: string
+      label: 'Value'
+
+field.storage_settings.xdecimal:
+  type: mapping
+  label: 'Decimal settings'
+  mapping:
+    unsigned:
+      type: boolean
+      label: 'Unsigned'
+    precision:
+      type: integer
+      label: 'Precision'
+    scale:
+      type: integer
+      label: 'Scale'
+
+field.field_settings.xdecimal:
+  type: mapping
+  label: 'Decimal settings'
+  mapping:
+    step:
+      type: float
+      label: 'Step'
+    min:
+      type: float
+      label: 'Minimum'
+    max:
+      type: float
+      label: 'Maximum'
+    prefix:
+      type: label
+      label: 'Prefix'
+    suffix:
+      type: label
+      label: 'Suffix'
+    placeholder:
+      type: label
+      label: 'Placeholder'
+
+
+field.value.xfloat:
+  type: mapping
+  label: 'Default value'
+  mapping:
+    value:
+      type: string
+      label: 'Value'
+
+field.storage_settings.xfloat:
+  type: mapping
+  label: 'Float settings'
+  mapping:
+    unsigned:
+      type: boolean
+      label: 'Unsigned'
+
+field.field_settings.xfloat:
+  type: mapping
+  label: 'Float settings'
+  mapping:
+    step:
+      type: string
+      label: 'Step'
+    min:
+      type: string
+      label: 'Minimum'
+    max:
+      type: string
+      label: 'Maximum'
+    prefix:
+      type: label
+      label: 'Prefix'
+    suffix:
+      type: label
+      label: 'Suffix'
+    placeholder:
+      type: label
+      label: 'Placeholder'
+
+field.widget.settings.xnumber:
+  type: mapping
+  label: 'Xnumber default display format settings'
+  mapping:
+    default_value:
+      type: string
+      label: 'Default value'
+    step:
+      type: string
+      label: 'Step'
+    min:
+      type: string
+      label: 'Minimum'
+    max:
+      type: string
+      label: 'Maximum'
+    prefix:
+      type: label
+      label: 'Prefix'
+    suffix:
+      type: label
+      label: 'Suffix'
+    placeholder:
+      type: label
+      label: 'Placeholder'

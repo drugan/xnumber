@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Contains xnumber.module.
+ */
+
+/**
+ * Implements hook_field_formatter_info_alter().
+ */
+function xnumber_field_formatter_info_alter(array &$info) {
+  if (isset($info['number_unformatted']['field_types'])) {
+    $info['number_unformatted']['field_types'][] = 'xinteger';
+    $info['number_unformatted']['field_types'][] = 'xdecimal';
+    $info['number_unformatted']['field_types'][] = 'xfloat';
+  }
+  if (isset($info['number_decimal']['field_types'])) {
+    $info['number_decimal']['field_types'][] = 'xdecimal';
+    $info['number_decimal']['field_types'][] = 'xfloat';
+  }
+  if (isset($info['number_integer']['field_types'])) {
+    $info['number_integer']['field_types'][] = 'xinteger';
+  }
+}
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function xnumber_element_info_alter(array &$info) {
+  if (isset($info['number'])) {
+
+    /**
+     * Alters element processing class.
+     */
+    function alter(&$item) {
+      if (is_array($item)) {
+        array_walk($item, 'alter');
+      }
+      elseif ($item === 'Drupal\Core\Render\Element\Number') {
+        $item = 'Drupal\xnumber\Render\Element\Xnumber';
+      }
+    }
+
+    array_walk($info['number'], 'alter');
+  }
+}
