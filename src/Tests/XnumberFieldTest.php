@@ -20,7 +20,7 @@ class XnumberFieldTest extends WebTestBase {
    *
    * @var array
    */
-  public static $modules = ['node', 'entity_test', 'field_ui', 'xnumber'];
+  public static $modules = ['node', 'entity_test', 'field_ui', 'readmehelp', 'xnumber'];
 
   /**
    * Set up the test.
