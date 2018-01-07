@@ -17,5 +17,7 @@
     "issues": "https://github.com/drugan/xnumber/issues",
     "source": "https://github.com/drugan/xnumber"
   },
-  "require": { }
+  "require": {
+        "drupal/readmehelp": "dev-1.x"
+  }
 }
