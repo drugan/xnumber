@@ -215,6 +215,10 @@ class XnumberWidget extends NumberWidget {
     $field_settings = $this->getFieldSettings();
     // The current form display mode settings.
     $settings = $this->getSettings();
+    if (isset($settings['disable_on_cart']) && $settings['disable_on_cart'] === '') {
+      // This is required only by commerce_xquantity module.
+      unset($settings['disable_on_cart']);
+    }
     // Base or default form display default value.
     $default_value = current(array_column($this->fieldDefinition->getDefaultValueLiteral(), 'value'));
     $default_value = is_numeric($default_value) ? Numeric::toString(($default_value + 0)) : $none;

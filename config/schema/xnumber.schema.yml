@@ -1,3 +1,26 @@
+xnumber_field_settings:
+  type: mapping
+  label: 'Xnumber field settings'
+  mapping:
+    step:
+      type: string
+      label: 'Step'
+    min:
+      type: string
+      label: 'Minimum'
+    max:
+      type: string
+      label: 'Maximum'
+    prefix:
+      type: label
+      label: 'Prefix'
+    suffix:
+      type: label
+      label: 'Suffix'
+    placeholder:
+      type: label
+      label: 'Placeholder'
+
 field.value.xinteger:
   type: mapping
   label: 'Default value'
@@ -18,27 +41,8 @@ field.storage_settings.xinteger:
       label: 'The size of a number'
 
 field.field_settings.xinteger:
-  type: mapping
+  type: xnumber_field_settings
   label: 'Integer'
-  mapping:
-    step:
-      type: string
-      label: 'Step'
-    min:
-      type: string
-      label: 'Minimum'
-    max:
-      type: string
-      label: 'Maximum'
-    prefix:
-      type: label
-      label: 'Prefix'
-    suffix:
-      type: label
-      label: 'Suffix'
-    placeholder:
-      type: label
-      label: 'Placeholder'
 
 field.value.xdecimal:
   type: mapping
@@ -63,27 +67,8 @@ field.storage_settings.xdecimal:
       label: 'Scale'
 
 field.field_settings.xdecimal:
-  type: mapping
+  type: xnumber_field_settings
   label: 'Decimal settings'
-  mapping:
-    step:
-      type: float
-      label: 'Step'
-    min:
-      type: float
-      label: 'Minimum'
-    max:
-      type: float
-      label: 'Maximum'
-    prefix:
-      type: label
-      label: 'Prefix'
-    suffix:
-      type: label
-      label: 'Suffix'
-    placeholder:
-      type: label
-      label: 'Placeholder'
 
 
 field.value.xfloat:
@@ -103,50 +88,21 @@ field.storage_settings.xfloat:
       label: 'Unsigned'
 
 field.field_settings.xfloat:
-  type: mapping
+  type: xnumber_field_settings
   label: 'Float settings'
-  mapping:
-    step:
-      type: string
-      label: 'Step'
-    min:
-      type: string
-      label: 'Minimum'
-    max:
-      type: string
-      label: 'Maximum'
-    prefix:
-      type: label
-      label: 'Prefix'
-    suffix:
-      type: label
-      label: 'Suffix'
-    placeholder:
-      type: label
-      label: 'Placeholder'
 
-field.widget.settings.xnumber:
-  type: mapping
-  label: 'Xnumber default display format settings'
+xnumber_field_widget_settings:
+  type: xnumber_field_settings
+  label: 'Xnumber widget settings'
   mapping:
     default_value:
       type: string
       label: 'Default value'
-    step:
+    # This is required by commerce_xquantity module
+    disable_on_cart:
       type: string
-      label: 'Step'
-    min:
-      type: string
-      label: 'Minimum'
-    max:
-      type: string
-      label: 'Maximum'
-    prefix:
-      type: label
-      label: 'Prefix'
-    suffix:
-      type: label
-      label: 'Suffix'
-    placeholder:
-      type: label
-      label: 'Placeholder'
+      label: 'Disable on cart page'
+
+field.widget.settings.xnumber:
+  type: xnumber_field_widget_settings
+  label: 'Xnumber default display format settings'
