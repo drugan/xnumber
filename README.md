@@ -81,6 +81,10 @@ The same with changing the earlier saved *Step* property. First, set blank the
 process. Later, when you grasp how the module works you can set all the settings
 in one go without getting error messages on an attempt to save a wrong value.
 
+## TODO
+
+- [Issue #52153: Add Number::format with settings to configure decimal point and thousands separators ↗](https://www.drupal.org/project/drupal/issues/52153)
+
 ###### Module author:
 
 ```
