@@ -28,19 +28,18 @@ function xnumber_field_formatter_info_alter(array &$info) {
  */
 function xnumber_element_info_alter(array &$info) {
   if (isset($info['number'])) {
+    array_walk($info['number'], '_xnumber_element_info_alter');
+  }
+}
 
-    /**
-     * Alters element processing class.
-     */
-    function alter(&$item) {
-      if (is_array($item)) {
-        array_walk($item, 'alter');
-      }
-      elseif ($item === 'Drupal\Core\Render\Element\Number') {
-        $item = 'Drupal\xnumber\Render\Element\Xnumber';
-      }
-    }
-
-    array_walk($info['number'], 'alter');
+/**
+ * Alters element processing class.
+ */
+function _xnumber_element_info_alter(&$item) {
+  if (is_array($item)) {
+    array_walk($item, '_xnumber_element_info_alter');
+  }
+  elseif ($item === 'Drupal\Core\Render\Element\Number') {
+    $item = 'Drupal\xnumber\Render\Element\Xnumber';
   }
 }

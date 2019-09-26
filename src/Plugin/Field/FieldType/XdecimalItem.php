@@ -218,8 +218,9 @@ class XdecimalItem extends XnumericItemBase {
     // point.
     // The maximum number you can get with 3 digits is 10^3 - 1 --> 999.
     // The minimum number you can get with 3 digits is -1 * (10^3 - 1).
-    $max = is_numeric($settings['max']) ?: pow(10, ($precision - $scale)) - 1;
-    $min = is_numeric($settings['min']) ?: -pow(10, ($precision - $scale)) + 1;
+    $max = is_numeric($settings['max']) ? $settings['max'] : pow(10, ($precision - $scale)) - 1;
+    $min = $settings['unsigned'] && ($settings['min'] > 0) ? $settings['min'] : 0;
+    $min = is_numeric($min) ? $min : -pow(10, ($precision - $scale)) + 1;
 
     // Get the number of decimal digits for the $max.
     $decimal_digits = Numeric::getDecimalDigits($max);
@@ -232,6 +233,7 @@ class XdecimalItem extends XnumericItemBase {
     // http://php.net/manual/function.mt-getrandmax.php
     $random_decimal = $min + mt_rand() / mt_getrandmax() * ($max - $min);
     $values['value'] = Numeric::truncateDecimal($random_decimal, $scale);
+
     return $values;
   }
 

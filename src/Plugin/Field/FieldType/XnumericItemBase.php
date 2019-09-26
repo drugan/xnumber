@@ -49,7 +49,6 @@ abstract class XnumericItemBase extends FieldItemBase {
       '#type' => 'number',
       '#title' => $this->t('Step', [], ['context' => 'numeric item']),
       '#description' => $this->t('The default minimum allowed amount to increment or decrement the field value. Note that setting an integer for this value on a decimal or float field restricts the input on the field to integer values only. Can be overriden on a form display mode. While updating this field it is recommended to keep the <em>Default Value</em>, <em>Minimum</em> and <em>Maximum</em> fields blank.'),
-      '#maxlenght' => 60,
     ];
     $element['min'] = [
       '#type' => 'number',
@@ -83,6 +82,7 @@ abstract class XnumericItemBase extends FieldItemBase {
       '#default_value' => isset($settings['placeholder']) ? $settings['placeholder'] : '',
       '#description' => t('The default text that will be shown inside the field until a value is entered. This hint is usually a sample value or a brief description of the expected format. Can be overriden on a form display mode.'),
     ];
+
     return $element;
   }
 
