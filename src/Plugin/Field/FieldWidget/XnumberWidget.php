@@ -21,7 +21,17 @@ use Drupal\Core\Field\Plugin\Field\FieldWidget\NumberWidget;
  *     "float",
  *     "xinteger",
  *     "xdecimal",
- *     "xfloat"
+ *     "xfloat",
+ *     "techd_int",
+ *     "techd_inte",
+ *     "techd_integ",
+ *     "techd_intege",
+ *     "techd_integer",
+ *     "techd_dec",
+ *     "techd_deci",
+ *     "techd_decim",
+ *     "techd_decima",
+ *     "techd_decimal",
  *   }
  * )
  */
@@ -271,11 +281,21 @@ class XnumberWidget extends NumberWidget {
     switch ($this->fieldDefinition->getType()) {
       case 'integer':
       case 'xinteger':
+      case 'techd_int':
+      case 'techd_inte':
+      case 'techd_integ':
+      case 'techd_intege':
+      case 'techd_integer':
         $step = '1';
         break;
 
       case 'decimal':
       case 'xdecimal':
+      case 'techd_dec':
+      case 'techd_deci':
+      case 'techd_decim':
+      case 'techd_decima':
+      case 'techd_decimal':
         $step = Numeric::toString(pow(0.1, $field_settings['scale']));
         break;
 
