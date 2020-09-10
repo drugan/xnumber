@@ -5,7 +5,7 @@ namespace Drupal\xnumber\Tests;
 use Drupal\Component\Utility\Unicode;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\node\Entity\Node;
-use Drupal\simpletest\WebTestBase;
+use Drupal\Tests\BrowserTestBase;
 use Drupal\field\Entity\FieldStorageConfig;
 
 /**
@@ -13,7 +13,7 @@ use Drupal\field\Entity\FieldStorageConfig;
  *
  * @group field
  */
-class XnumberFieldTest extends WebTestBase {
+class XnumberFieldTest extends BrowserTestBase {
 
   /**
    * Modules to enable.
@@ -55,7 +55,7 @@ class XnumberFieldTest extends WebTestBase {
     $settings = $this->saveNumberFormDisplaySettings($field, $field_name, $get_random_settings = []);
     extract($settings);
 
-    entity_get_display('entity_test', 'entity_test', 'default')
+    \Drupal::service('entity_display.repository')->getViewDisplay('entity_test', 'entity_test', 'default')
       ->setComponent($field_name, [
         'type' => 'number_integer',
         'settings' => [
@@ -128,7 +128,7 @@ class XnumberFieldTest extends WebTestBase {
       elseif ($i == 3) {
         $not = '';
         $method = 'assertFieldByXpath';
-        entity_get_display('entity_test', 'entity_test', 'default')
+        \Drupal::service('entity_display.repository')->getViewDisplay('entity_test', 'entity_test', 'default')
           ->setComponent($field_name, [
             'type' => 'number_integer',
             'settings' => [
@@ -209,7 +209,7 @@ class XnumberFieldTest extends WebTestBase {
     $settings = $this->saveNumberFormDisplaySettings($field, $field_name, $get_random_settings = []);
     extract($settings);
 
-    entity_get_display('entity_test', 'entity_test', 'default')
+    \Drupal::service('entity_display.repository')->getViewDisplay('entity_test', 'entity_test', 'default')
       ->setComponent($field_name, [
         'type' => 'number_decimal',
       ])
@@ -305,7 +305,7 @@ class XnumberFieldTest extends WebTestBase {
     $settings = $this->saveNumberFormDisplaySettings($field, $field_name, $get_random_settings = []);
     extract($settings);
 
-    entity_get_display('entity_test', 'entity_test', 'default')
+    \Drupal::service('entity_display.repository')->getViewDisplay('entity_test', 'entity_test', 'default')
       ->setComponent($field_name, [
         'type' => 'number_decimal',
       ])
@@ -400,9 +400,9 @@ class XnumberFieldTest extends WebTestBase {
    * Test default formatter behavior.
    */
   public function testNumberFormatter() {
-    $type = Unicode::strtolower($this->randomMachineName());
-    $float_field = Unicode::strtolower($this->randomMachineName());
-    $integer_field = Unicode::strtolower($this->randomMachineName());
+    $type = mb_strtolower($this->randomMachineName());
+    $float_field = mb_strtolower($this->randomMachineName());
+    $integer_field = mb_strtolower($this->randomMachineName());
     $thousand_separators = ['', '.', ',', ' ', chr(8201), "'"];
     $decimal_separators = ['.', ','];
     $prefix = $this->randomMachineName();
@@ -445,7 +445,7 @@ class XnumberFieldTest extends WebTestBase {
       ],
     ])->save();
 
-    entity_get_form_display('node', $type, 'default')
+    \Drupal::service('entity_display.repository')->getFormDisplay('node', $type, 'default')
       ->setComponent($float_field, [
         'type' => 'xnumber',
         'settings' => [
@@ -460,7 +460,7 @@ class XnumberFieldTest extends WebTestBase {
       ])
       ->save();
 
-    entity_get_display('node', $type, 'default')
+    \Drupal::service('entity_display.repository')->getViewDisplay('node', $type, 'default')
       ->setComponent($float_field, [
         'type' => 'number_decimal',
       ])
@@ -503,7 +503,7 @@ class XnumberFieldTest extends WebTestBase {
     $this->assertRaw((string) $random_integer);
 
     // Configure the number_decimal formatter.
-    entity_get_display('node', $type, 'default')
+    \Drupal::service('entity_display.repository')->getViewDisplay('node', $type, 'default')
       ->setComponent($integer_field, [
         'type' => 'number_integer',
       ])
@@ -578,7 +578,7 @@ class XnumberFieldTest extends WebTestBase {
    * Creates a number field of the given type with optional settings.
    */
   private function createNumberField($type, $config_settings = [], $field_settings = []) {
-    $field_name = Unicode::strtolower($this->randomMachineName());
+    $field_name = mb_strtolower($this->randomMachineName());
     $config = [
       'field_name' => $field_name,
       'entity_type' => 'entity_test',
@@ -721,7 +721,7 @@ class XnumberFieldTest extends WebTestBase {
    */
   private function saveNumberFormDisplaySettings($field, $field_name, $test_settings = []) {
     $settings = empty($test_settings) ? $this->getRandomNumberSettings($field) : $test_settings;
-    $widget = entity_get_form_display('entity_test', 'entity_test', 'default');
+    $widget = \Drupal::service('entity_display.repository')->getFormDisplay('entity_test', 'entity_test', 'default');
     $widget->setComponent($field_name, [
       'type' => 'xnumber',
       'settings' => $settings,
