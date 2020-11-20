@@ -172,7 +172,7 @@ class XnumberWidget extends NumberWidget {
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $settings = $this->getFormDisplayModeSettings();
     $value = isset($items[$delta]->value) ? Numeric::toString($items[$delta]->value + 0) : NULL;
-    $default_value = is_numeric($settings['default_value']) ? $settings['default_value'] : $value;
+    $default_value = is_null($value) && is_numeric($settings['default_value']) ? $settings['default_value'] : $value;
     $count = is_numeric($default_value) ? $default_value : 1;
 
     $element += [
